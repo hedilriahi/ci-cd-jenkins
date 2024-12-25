@@ -13,7 +13,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("hedilriahi/flask-app:latest")
+                    sh "sudo docker build -t flask-app ."
                 }
             }
         }
