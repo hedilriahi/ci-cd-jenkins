@@ -1,8 +1,7 @@
 pipeline {
     agent any
-
-    environment {
-        DOCKER_IMAGE = "flask-app"
+    tools {
+        dockerTool "docker"
     }
 
     stages {
@@ -14,7 +13,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${DOCKER_IMAGE} ."
+                    docker.build("hedilriahi/flask-app:latest")
                 }
             }
         }
