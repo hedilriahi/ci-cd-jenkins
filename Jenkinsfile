@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        dockerTool "docker"
-    }
 
     stages {
         stage('Clone Repository') {
@@ -10,10 +7,10 @@ pipeline {
                 git 'https://github.com/hedilriahi/ci-cd-jenkins.git'
             }
         }
-        stage('Build Docker Image') {
+        stage('Install Dependencies') {
             steps {
                 script {
-                    sh "docker build -t flask-app ."
+                    sh "pip install -r requirements.txt"
                 }
             }
         }
